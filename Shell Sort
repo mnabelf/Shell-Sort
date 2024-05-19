@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+void shellSort(int arr[], int ukrn){
+    for(int gap = ukrn/2; gap > 0; gap /= 2){
+        for(int j = gap; j < ukrn; j++){
+            int temp = arr[j];
+            int i = 0;
+            for(i = j; (i >=gap) && (arr[i-gap] > temp); i -= gap){
+                arr[i] = arr[i-gap];
+            }
+            arr[i] = temp;
+        }
+    }
+}
+
+int main()
+{
+    int ukrn;
+    cout << "Masukkan ukuran Array :" << endl;
+    cin >> ukrn;
+
+    int arr1[ukrn];
+
+    cout << "Masukkan " << ukrn << " elemen secara acak." << endl;
+    for(int i=0; i<ukrn; i++){
+        cin >> arr1[i];
+    }
+
+    cout << "\nArray sebelum sorting :" << endl;
+    for(int i=0; i<ukrn; i++){
+        cout << arr1[i] << " ";
+    }
+
+    cout << "\nShell Sort Dilakukan." << endl;
+    shellSort(arr1, ukrn);
+
+    cout << "\nArray setelah sorting :" << endl;
+    for(int i=0; i<ukrn; i++){
+        cout << arr1[i] << " ";
+    }
+    return 0;
+}
